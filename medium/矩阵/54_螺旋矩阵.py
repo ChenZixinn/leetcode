@@ -6,28 +6,47 @@ from typing import List
 
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        row = 0
-        col = 0
-        rn = len(matrix) - 1
-        rc = len(matrix[0]) - 1
-        res = []
-        # 按右、下、上、左的顺序执行
-        while True:
-            res.append(matrix[row][col])
-            matrix[row][col] = -1
-            if col < rn and matrix[row][col] != -1:
-                col += 1
-            elif row < rn:
-                row += 1
-            elif col >= 0:
-                col -= 1
-            else:
-                row -=1
-            if matrix[row][col] == -1:
-                break
-        return res
+        # l = 0
+        # u = 0
+        # d = len(matrix)-1
+        # r = len(matrix[0])-1
+        # res = []
+        # while True:
+        #     # 按右、下、上、左的顺序执行
+        #     for col in range(l, r+1):
+        #         res.append(matrix[u][col])
+        #     u += 1
+        #     if u>d:break
+        #     # 下
+        #     for row in range(u, d+1):
+        #         res.append(matrix[row][r])
+        #     r-=1
+        #     if r<l:break
+        #     # 左
+        #     for col in range(r, l-1, -1):
+        #         res.append(matrix[d][col])
+        #     d -= 1
+        #     if d < u: break
+        #     # 上
+        #     for row in range(d, u-1, -1):
+        #         res.append(matrix[row][l])
+        #     l += 1
+        #     if l>r:break
+        # return res
+        # res = []
+        # while matrix:
+        #     res += matrix.pop(0)
+        #     matrix = [*zip(*matrix)][::-1]
+        return matrix and [*matrix.pop(0)] + self.spiralOrder([*zip(*matrix)][::-1])
 
 
 if __name__ == '__main__':
-    res = Solution().spiralOrder([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+    # res = Solution().spiralOrder(
+    #     [[1, 2, 3, 4, 5],
+    #      [6, 7, 8, 9, 10],
+    #      [11, 12, 13, 14, 15],
+    #      [16, 17, 18, 19, 20],
+    #      [21, 22, 23, 24, 25]])
+    res = Solution().spiralOrder(
+        [[2,5,8],[4,0,-1]])
     print(res)
