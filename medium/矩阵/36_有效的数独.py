@@ -13,8 +13,17 @@ class Solution:
         columns = [[0] * 9 for _ in range(9)]
         rows = [[0] * 9 for _ in range(9)]
         subboxes = [[[0] * 9 for _ in range(3)] for _ in range(3)]
-        # TODO
-        return False
+        for i, nums in enumerate(board):
+            for j, num in enumerate(nums):
+                if num == '.':
+                    continue
+                num = int(num)-1
+                rows[i][num] += 1
+                columns[j][num] += 1
+                subboxes[i//3][j//3][num] += 1
+                if columns[j][num] > 1 or rows[i][num] > 1 or subboxes[i//3][j//3][num] > 1:
+                    return False
+        return True
 
 
 if __name__ == '__main__':
