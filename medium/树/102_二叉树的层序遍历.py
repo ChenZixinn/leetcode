@@ -1,7 +1,6 @@
 """
 
 """
-from queue import Queue
 from typing import Optional, List
 
 from common.data_structure import TreeNode
