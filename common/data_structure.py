@@ -18,3 +18,4 @@ class Node:
         self.left = left
         self.right = right
         self.next = next
+

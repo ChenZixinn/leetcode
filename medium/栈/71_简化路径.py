@@ -12,6 +12,7 @@
 返回简化后得到的 规范路径 。
 """
 
+
 class Solution:
     def simplifyPath(self, path: str) -> str:
         path_stack = []
