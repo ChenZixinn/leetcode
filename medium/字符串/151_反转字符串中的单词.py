@@ -4,15 +4,15 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        s = s.strip()
-        while "  " in s:
-            s = s.replace("  ", " ")
-        ori_list = s.split()
-
-        for i in range(len(ori_list)//2):
-            left = ori_list[i]
-            ori_list[i] = ori_list[len(ori_list)-i-1]
-            ori_list[len(ori_list)-i-1] = left
+        # s = s.strip()
+        # while "  " in s:
+        #     s = s.replace("  ", " ")
+        # ori_list = s.split()
+        #
+        # for i in range(len(ori_list)//2):
+        #     left = ori_list[i]
+        #     ori_list[i] = ori_list[len(ori_list)-i-1]
+        #     ori_list[len(ori_list)-i-1] = left
         # return " ".join(ori_list)
 
         # 官方解答
