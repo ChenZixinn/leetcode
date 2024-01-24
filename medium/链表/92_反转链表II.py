@@ -23,10 +23,9 @@ class Solution:
             next.next = pre.next
             pre.next = next
 
-
         return dummy_node.next
 
-# 1 3 4 2  5
+
 if __name__ == '__main__':
     head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
     res = Solution().reverseBetween(head, 2, 4)
