@@ -15,6 +15,7 @@ class Solution:
         m = len(obstacleGrid)
         n = len(obstacleGrid[0])
         dp = [[0 for _ in range(n)] for _ in range(m)]
+        # 以下两个循环先把第一行第一列走一遍，方便后面计算
         for i in range(m):
             if obstacleGrid[i][0] == 1:
                 break
@@ -23,6 +24,7 @@ class Solution:
             if obstacleGrid[0][i] == 1:
                 break
             dp[0][i] = 1
+        # 从第一行第一列开始走，走过之后加上之前走过的次数，就得出了最终的路径条数
         for row in range(1, m):
             for col in range(1, n):
                 if obstacleGrid[row][col] != 1:
