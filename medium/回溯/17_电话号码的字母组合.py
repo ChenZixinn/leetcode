@@ -30,9 +30,8 @@ class Solution:
         # combination = list()
         # backtrace(0)
 
-        # 迭代
+        # 2、迭代
         groups = (phoneMap[digit] for digit in digits)
-        print(groups)
         return [''.join(combination) for combination in itertools.product(*groups)]
 
 

@@ -8,16 +8,21 @@ class Solution:
     给定一个二叉树的 根节点 root，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。
     """
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        rightmost_value_at_depth = dict()
+        res = dict()
         max_depth = -1
-
         stack = [(root, 0)]
-
         while stack:
-            node, depth = stack.pop()
-            if node is not None:
-                max_depth = max(max_depth, depth)
-                rightmost_value_at_depth.setdefault(depth, node.val)
-                stack.append((node.left, depth+1))
-                stack.append((node.right, depth+1))
-        return [rightmost_value_at_depth[depth] for depth in range(max_depth + 1)]
+            root, depth = stack.pop()
+            if root:
+                max_depth = max(depth, max_depth)
+                res.setdefault(depth, root.val)
+                stack.append((root.left, depth+1))
+                stack.append((root.right, depth+1))
+
+        return [res[depth] for depth in range(max_depth + 1)]
+
+
+if __name__ == '__main__':
+    root = TreeNode(1, left=TreeNode(2, right=TreeNode(5)), right=TreeNode(3, left=TreeNode(4)))
+    res = Solution().rightSideView(root)
+    print(res)
