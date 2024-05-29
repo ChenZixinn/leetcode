@@ -18,9 +18,6 @@ from typing import List
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        # if len(nums) == 0:
-        #     return 0
-
         # 分解成子问题
         """
         f(k) = 偷[0..k)房间的最大金额
@@ -28,20 +25,22 @@ class Solution:
         f(1) = nums[0]
         f(k) = max { rob(k-1), rob(k-2) + nums[k-1]}
         """
-
+        # 动态规划
         # n = len(nums)
-        # dp = [0] * (n + 1)
+        # dp = [0] * (n+1)
         # dp[0] = 0
         # dp[1] = nums[0]
-        pre = 0
-        cur = 0
-        # for i in range(2, n + 1):
-        for i in nums:
-            pre, cur = cur, max(cur,i+pre)
-            # dp[i] = max(dp[i - 1], dp[i - 2] + nums[i - 1])
+        # for i in range(1, n):
+        #     dp[i+1] = max(dp[i], dp[i-1] + nums[i])
+        # return dp[-1]
+
+        # 简化
+        pre, cur = 0, nums[0]
+        for i in nums[1:]:
+            pre, cur = cur, max(cur, i + pre)
         return cur
 
 
 if __name__ == '__main__':
-    res = Solution().rob([1, 3, 4, 6])
+    res = Solution().rob([1, 2, 3, 1])
     print(res)
