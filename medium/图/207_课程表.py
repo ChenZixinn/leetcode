@@ -80,7 +80,6 @@ class Solution:
         return visited == numCourses
 
 
-
 if __name__ == '__main__':
     prerequisites = [[1, 0], [0, 1]]
     num_courses = 2
