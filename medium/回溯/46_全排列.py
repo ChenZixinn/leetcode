@@ -19,19 +19,21 @@ from typing import List
 
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        ans = []
         n = len(nums)
+        ans = []
         def traceback(first):
+            # first 指以哪个值作为第一个数
             if first == n:
                 ans.append(nums[:])
-            for i in range(first, n):
-                nums[first], nums[i] = nums[i], nums[first]
-                traceback(first + 1)
-                nums[first], nums[i] = nums[i], nums[first]
-
+            else:
+                for i in range(first, n):
+                    # 交换
+                    nums[first], nums[i] = nums[i], nums[first]
+                    traceback(first + 1)
+                    # 恢复到原始值
+                    nums[first], nums[i] = nums[i], nums[first]
         traceback(0)
         return ans
-
 
 if __name__ == '__main__':
     res = Solution().permute([1, 2, 3,4])
